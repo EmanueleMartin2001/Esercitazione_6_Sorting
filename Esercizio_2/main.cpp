@@ -8,10 +8,10 @@ using namespace std;
 int main(int argc, char * argv[])
 {
     //argc tells how long is argv
-    int s = 50; //number of times I evaluate the time for a fixed vector size (using big number law; increase k for better precision)
+    int s = 50; //number of times I evaluate the time for a fixed vector size (using big numbers law; increase k for better precision)
     vector<int> ns = {};
     ns.resize(argc-1);
-    if (argc == 1){ //if no argument are given :(
+    if (argc == 1){ //if no arguments are given
         cerr << "no argument";
         return 1;
     }
@@ -30,15 +30,15 @@ int main(int argc, char * argv[])
                 vect[i] = rand();
             }
 
-            vector<int> vectBubble = vect; //I have to make a copy to avoid silly mistakes
+            vector<int> vectBubble = vect; //I have to make a copy to avoid silly mistakes (sorting a sorted vector)
 
-            //misurazione MergeSort
+            //MergeSort
             chrono::steady_clock::time_point t_begin_Merge = chrono::steady_clock::now();
             SortLibrary::MergeSort(vect);
             chrono::steady_clock::time_point t_end_Merge = chrono::steady_clock::now();
             double timeElapsed_Mergesort = chrono::duration_cast<chrono::microseconds>(t_end_Merge-t_begin_Merge).count();
 
-            //misurazioni bubblesort
+            //BubbleSort
             chrono::steady_clock::time_point t_begin_Bubble = chrono::steady_clock::now();
             SortLibrary::BubbleSort(vectBubble);
             chrono::steady_clock::time_point t_end_Bubble = chrono::steady_clock::now();
